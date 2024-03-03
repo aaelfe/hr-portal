@@ -76,7 +76,7 @@ export const CandidateTable = () => {
                 <Tbody>
                     {filteredCandidates.map(candidate => (
                     <Tr key={candidate.id}>
-                        <Link href={candidate.id} passHref>
+                        <Link href={"pages/"+candidate.id} passHref>
                             <Td>{candidate.firstName + " " + candidate.lastName}</Td>
                         </Link>
                         <Td>{candidate.university}</Td>

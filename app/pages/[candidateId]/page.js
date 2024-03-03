@@ -2,7 +2,7 @@
 
 import { extendTheme, ChakraProvider, Flex, Box } from "@chakra-ui/react";
 import { Button } from "@chakra-ui/react";
-import { db, bucket } from "../firebase";
+import { db, bucket } from "../../firebase";
 import { useState, useEffect } from "react";
 import { doc, getDoc } from "firebase/firestore";
 import ResponsiveFormContainer from "@/components/ResponsiveFormContainer";
@@ -39,7 +39,7 @@ const theme = extendTheme({
   },
 })
 
-export default function Page(props) {
+function Page(props) {
   let [candidate, setCandidate] = useState(null)
 
   useEffect(() => {
@@ -84,3 +84,24 @@ export default function Page(props) {
     </ChakraProvider>
   );
 }
+
+// export async function getServerSideProps(context) {
+//   console.log(context)
+//   const { params } = context;
+//   const candidateDoc = doc(db, "candidates", params.email);
+//   const candidateSnapshot = await getDoc(candidateDoc);
+
+//   if (!candidateSnapshot.exists()) {
+//     return {
+//       notFound: true,
+//     };
+//   }
+
+//   const candidateData = { id: candidateSnapshot.id, ...candidateSnapshot.data() };
+
+//   return {
+//     props: { candidate: candidateData }, // will be passed to the page component as props
+//   };
+// }
+
+export default Page
