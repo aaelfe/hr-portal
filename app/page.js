@@ -1,95 +1,72 @@
+'use client'
+
 import Image from "next/image";
 import styles from "./page.module.css";
+import { extendTheme, ChakraProvider } from "@chakra-ui/react";
+import CandidateTable from "@/components/CandidateTable";
+import HeaderBanner from "@/components/HeaderBanner";
+import ResponsiveFormContainer from "@/components/ResponsiveFormContainer";
+
+const theme = extendTheme({
+  colors: {
+    "purple": {
+      "50": "#EFECF9",
+      "100": "#D2C9EE",
+      "200": "#B4A6E3",
+      "300": "#9783D8",
+      "400": "#7A60CD",
+      "500": "#5D3DC2",
+      "600": "#4A319B",
+      "700": "#382574",
+      "800": "#25184E",
+      "900": "#130C27"
+    },
+    "red": {
+      "50": "#FCE8EB",
+      "100": "#F8BFC7",
+      "200": "#F395A3",
+      "300": "#EF6C7F",
+      "400": "#EA435C",
+      "500": "#E61938",
+      "600": "#B8142D",
+      "700": "#8A0F21",
+      "800": "#5C0A16",
+      "900": "#2E050B"
+    },
+    "yellow": {
+      "50": "#FBF5EA",
+      "100": "#F3E3C3",
+      "200": "#ECD29D",
+      "300": "#E4C077",
+      "400": "#DDAE50",
+      "500": "#D59D2A",
+      "600": "#AA7D22",
+      "700": "#805E19",
+      "800": "#553F11",
+      "900": "#2B1F08"
+    },
+    "orange": {
+      "50": "#FCF1E9",
+      "100": "#F5D6C1",
+      "200": "#EFBC9A",
+      "300": "#E9A272",
+      "400": "#E3884A",
+      "500": "#DD6E22",
+      "600": "#B0581C",
+      "700": "#844215",
+      "800": "#582C0E",
+      "900": "#2C1607"
+    }
+  },
+})
 
 export default function Home() {
   return (
-    <main className={styles.main}>
-      <div className={styles.description}>
-        <p>
-          Get started by editing&nbsp;
-          <code className={styles.code}>app/page.js</code>
-        </p>
-        <div>
-          <a
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{" "}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className={styles.vercelLogo}
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
-        </div>
-      </div>
-
-      <div className={styles.center}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
-
-      <div className={styles.grid}>
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Docs <span>-&gt;</span>
-          </h2>
-          <p>Find in-depth information about Next.js features and API.</p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Learn <span>-&gt;</span>
-          </h2>
-          <p>Learn about Next.js in an interactive course with&nbsp;quizzes!</p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Templates <span>-&gt;</span>
-          </h2>
-          <p>Explore starter templates for Next.js.</p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Deploy <span>-&gt;</span>
-          </h2>
-          <p>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
+    <ChakraProvider theme={theme}>
+      <HeaderBanner />
+      <ResponsiveFormContainer>
+        <CandidateTable />
+      </ResponsiveFormContainer>
+    </ChakraProvider>
   );
 }
